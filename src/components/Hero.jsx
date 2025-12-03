@@ -49,7 +49,7 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-pink-400 to-sky-400 bg-clip-text text-transparent">
             Ajaniya Kamalanthan
           </span>
-          , a Data Science undergraduate.
+          , Data Science undergraduate specializing in analytics, machine learning, and data-driven problem-solving.
         </h1>
 
         <p className="text-lg text-slate-400">
