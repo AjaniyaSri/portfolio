@@ -2,26 +2,12 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, Send, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react'
 import SectionHeader from './SectionHeader'
+import emailjs from '@emailjs/browser'
 
 const contactInfo = [
-  {
-    label: 'Email',
-    value: 'ajaniyaje23@gmail.com',
-    href: 'mailto:ajaniyaje23@gmail.com',
-    icon: Mail,
-  },
-  {
-    label: 'GitHub',
-    value: 'github.com/AjaniyaSri',
-    href: 'https://github.com/AjaniyaSri',
-    icon: Github,
-  },
-  {
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/ajaniyakamalanathan',
-    href: 'https://www.linkedin.com/in/ajaniyakamalanathan',
-    icon: Linkedin,
-  },
+  { label: 'Email', value: 'ajaniyaje23@gmail.com', href: 'mailto:ajaniyaje23@gmail.com', icon: Mail },
+  { label: 'GitHub', value: 'github.com/AjaniyaSri', href: 'https://github.com/AjaniyaSri', icon: Github },
+  { label: 'LinkedIn', value: 'linkedin.com/in/ajaniyakamalanathan', href: 'https://www.linkedin.com/in/ajaniyakamalanathan', icon: Linkedin },
 ]
 
 export default function Contact() {
@@ -34,7 +20,7 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (isSubmitting) return
 
@@ -50,13 +36,29 @@ export default function Contact() {
     setIsSubmitting(true)
     setStatus({ type: 'idle', message: '' })
 
-    // No backend yet – just log data
-    console.log('Contact form submitted:', trimmed)
-    setTimeout(() => {
-      setStatus({ type: 'success', message: 'Thanks! Your message has been recorded.' })
+    try {
+      // ✅ Put these values in your .env file (steps below)
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: trimmed.name,
+          from_email: trimmed.email,
+          message: trimmed.message,
+          to_email: 'ajaniyaje23@gmail.com', // your email
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+
+      console.log('EmailJS success:', result.text)
+      setStatus({ type: 'success', message: 'Thanks! Your message has been sent.' })
       setForm({ name: '', email: '', message: '' })
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setStatus({ type: 'error', message: 'Failed to send. Please try again later.' })
+    } finally {
       setIsSubmitting(false)
-    }, 600)
+    }
   }
 
   return (
@@ -66,6 +68,7 @@ export default function Contact() {
         title="Let’s get in touch"
         description="Send me a short message about internships, projects or any questions."
       />
+
       <div className="grid gap-8 lg:grid-cols-2">
         <motion.form
           initial={{ opacity: 0, y: 20 }}
@@ -76,14 +79,16 @@ export default function Contact() {
           onSubmit={handleSubmit}
           aria-label="Contact form"
         >
-          <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-r from-pink-400/15 to-sky-400/15 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-r from-blue-500/15 to-indigo-500/15 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
           <div className="relative">
             <div className="mb-6 flex items-center gap-3">
-              <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-400 to-sky-400 p-2 shadow-sm">
+              <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 p-2 shadow-sm">
                 <Send className="h-5 w-5 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">Send a message</h3>
             </div>
+
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="text-sm text-slate-300">
                 Name
@@ -93,9 +98,10 @@ export default function Contact() {
                   placeholder="Your name"
                   value={form.name}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-pink-400/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-pink-400/20"
+                  className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-blue-500/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 />
               </label>
+
               <label className="text-sm text-slate-300">
                 Email
                 <input
@@ -104,10 +110,11 @@ export default function Contact() {
                   placeholder="you@email.com"
                   value={form.email}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-pink-400/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-pink-400/20"
+                  className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-blue-500/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 />
               </label>
             </div>
+
             <label className="mt-4 block text-sm text-slate-300">
               Message
               <textarea
@@ -116,15 +123,16 @@ export default function Contact() {
                 placeholder="Tell me a bit about your idea or question..."
                 value={form.message}
                 onChange={handleChange}
-                className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-pink-400/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-pink-400/20"
+                className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/60 px-4 py-3 text-white placeholder:text-slate-500 transition-all duration-200 focus:border-blue-500/70 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               />
             </label>
+
             <motion.button
               type="submit"
               disabled={isSubmitting}
               whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-pink-400 to-sky-400 px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 hover:from-pink-300 hover:to-sky-300"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 hover:from-blue-400 hover:to-indigo-500"
             >
               {isSubmitting ? (
                 <>
@@ -142,6 +150,7 @@ export default function Contact() {
                 </>
               )}
             </motion.button>
+
             {status.message && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -152,17 +161,14 @@ export default function Contact() {
                     : 'border-rose-500/30 bg-rose-500/10 text-rose-400'
                 }`}
               >
-                {status.type === 'success' ? (
-                  <CheckCircle2 size={18} />
-                ) : (
-                  <AlertCircle size={18} />
-                )}
+                {status.type === 'success' ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
                 <p>{status.message}</p>
               </motion.div>
             )}
           </div>
         </motion.form>
 
+        {/* Direct links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -170,17 +176,20 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="group relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-6"
         >
-          <div className="absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-gradient-to-r from-pink-400/15 to-sky-400/15 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-gradient-to-r from-blue-500/15 to-indigo-500/15 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
           <div className="relative">
             <div className="mb-6 flex items-center gap-3">
-              <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-400 to-sky-400 p-2 shadow-sm">
+              <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 p-2 shadow-sm">
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">Reach me directly</h3>
             </div>
+
             <p className="mb-6 text-slate-400">
               Prefer direct outreach? Drop an email or connect via GitHub / LinkedIn.
             </p>
+
             <ul className="space-y-3">
               {contactInfo.map((item, idx) => {
                 const Icon = item.icon
@@ -197,14 +206,15 @@ export default function Contact() {
                       href={item.href}
                       target={item.href.startsWith('http') ? '_blank' : undefined}
                       rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group/item flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900 p-4 transition-all duration-200 hover:border-violet-500/60"
+                      className="group/item flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900 p-4 transition-all duration-200 hover:border-blue-500/60"
                     >
                       <div className="flex items-center justify-center rounded-xl bg-slate-800 p-2.5">
-                        <Icon className="h-5 w-5 text-violet-300" />
+                        <Icon className="h-5 w-5 text-blue-300" />
                       </div>
+
                       <div className="flex-1">
                         <p className="text-xs text-slate-400">{item.label}</p>
-                        <p className="mt-1 text-base font-semibold text-white group-hover/item:text-violet-300">
+                        <p className="mt-1 text-base font-semibold text-white group-hover/item:text-blue-300">
                           {item.value}
                         </p>
                       </div>

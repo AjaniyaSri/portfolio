@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Heart, Github, Linkedin, Mail, Code2, Sparkles } from 'lucide-react'
+import { Heart, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 
 const socialLinks = [
   {
@@ -27,6 +27,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-slate-800 bg-slate-950/90 py-8">
       <div className="relative mx-auto max-w-6xl px-4">
+        {/* Social */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,9 +36,10 @@ export default function Footer() {
           className="mb-8 flex flex-col items-center gap-6"
         >
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-pink-300" />
+            <Sparkles className="h-5 w-5 text-blue-400" />
             <h3 className="text-lg font-semibold text-white">Connect with me</h3>
           </div>
+
           <div className="flex items-center gap-4">
             {socialLinks.map((social, idx) => {
               const Icon = social.icon
@@ -53,10 +55,10 @@ export default function Footer() {
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                   whileHover={{ scale: 1.08, y: -3 }}
                   whileTap={{ scale: 0.97 }}
-                  className="group relative flex items-center justify-center rounded-full border border-slate-700 bg-slate-900 p-3 shadow-sm transition-colors duration-200 hover:border-pink-300/80"
+                  className="group relative flex items-center justify-center rounded-full border border-slate-700 bg-slate-900 p-3 shadow-sm transition-colors duration-200 hover:border-blue-500/70"
                   aria-label={social.name}
                 >
-                  <Icon className="h-5 w-5 text-pink-300" />
+                  <Icon className="h-5 w-5 text-blue-400" />
                   <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-900/90 px-2 py-1 text-xs text-slate-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     {social.name}
                   </span>
@@ -66,6 +68,7 @@ export default function Footer() {
           </div>
         </motion.div>
 
+        {/* Tech stack */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -88,6 +91,7 @@ export default function Footer() {
           ))}
         </motion.div>
 
+        {/* Copyright */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -97,7 +101,7 @@ export default function Footer() {
         >
           <div className="flex items-center gap-2">
             <span>© {year} Ajaniya Kamalanthan</span>
-            <Heart className="h-4 w-4 fill-rose-500 text-rose-500" />
+            <Heart className="h-4 w-4 fill-blue-500 text-blue-500" />
           </div>
           <p className="text-xs text-slate-500">
             Crafted with care using modern web tools and a focus on clean, readable design.

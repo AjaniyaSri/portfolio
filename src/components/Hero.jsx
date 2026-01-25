@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { MapPin, ArrowDownCircle, Download, Brain, Code2 } from 'lucide-react'
 import ajaniya from '../assets/ajaniya.jpg'
+
 const heroStats = [
   {
     label: 'Data & ML',
@@ -32,7 +33,7 @@ export default function Hero() {
         className="space-y-8"
       >
         <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-          <span className="inline-flex items-center gap-2 rounded-full border border-pink-300/60 bg-slate-900/80 px-4 py-1">
+          <span className="inline-flex items-center gap-2 rounded-full border border-slate-600/60 bg-slate-900/80 px-4 py-1">
             Data Science Undergraduate · IT
           </span>
           <span className="inline-flex items-center gap-1 text-slate-400">
@@ -43,18 +44,19 @@ export default function Hero() {
 
         <h1
           id="hero-heading"
-          className="text-4xl font-semibold leading-tight text-white md:text-5xl"
+          className="text-3xl font-semibold leading-tight text-white md:text-4xl"
         >
           Hi, I&apos;m{' '}
-          <span className="bg-gradient-to-r from-pink-400 to-sky-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
             Ajaniya Kamalanthan
           </span>
-          , Data Science undergraduate specializing in analytics, machine learning, and data-driven problem-solving.
+          , Data Science undergraduate specializing in analytics, machine learning, and data-driven
+          problem-solving.
         </h1>
 
         <p className="text-lg text-slate-400">
-          I like working with data, building simple ML solutions, and turning ideas into clear,
-          useful projects.
+          I like working with data, building simple ML solutions, and turning ideas into clear, useful
+          projects.
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -62,7 +64,7 @@ export default function Hero() {
             href="#projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-400 to-sky-400 px-6 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition-colors duration-200 hover:from-pink-300 hover:to-sky-300"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:from-blue-400 hover:to-indigo-500"
           >
             <ArrowDownCircle
               size={18}
@@ -75,7 +77,7 @@ export default function Hero() {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-2 rounded-full border border-pink-300 bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-sky-300 hover:text-pink-200"
+            className="group inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-blue-500 hover:text-blue-400"
           >
             <Download
               size={18}
@@ -90,7 +92,7 @@ export default function Hero() {
             rel="noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-2 rounded-full border border-pink-300 bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-sky-300 hover:text-pink-200"
+            className="group inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-blue-500 hover:text-blue-400"
           >
             <Download
               size={18}
@@ -110,16 +112,14 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
                 whileHover={{ scale: 1.02, y: -2 }}
-                className="group relative rounded-2xl border border-slate-800 bg-slate-900 p-4 transition-colors duration-200 hover:border-pink-300/70"
+                className="group relative rounded-2xl border border-slate-800 bg-slate-900 p-4 transition-colors duration-200 hover:border-blue-500/60"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-400 to-sky-400 p-2 shadow-sm">
+                  <div className="flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-teal-500 p-2 shadow-sm">
                     <Icon className="h-4 w-4 text-white" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs uppercase tracking-wide text-slate-400">
-                      {stat.label}
-                    </p>
+                    <p className="text-xs uppercase tracking-wide text-slate-400">{stat.label}</p>
                     <p className="mt-1 text-lg font-semibold text-white">{stat.value}</p>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function Hero() {
         whileHover={{ scale: 1.01, rotate: 0 }}
         className="group relative rounded-3xl border border-slate-800 bg-slate-900/80 p-1 shadow-2xl transition-all duration-500"
       >
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-sky-500/20 via-cyan-500/20 to-emerald-500/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative rounded-3xl bg-slate-950 p-6">
           <div className="relative overflow-hidden rounded-2xl border border-slate-800">
             <motion.img
@@ -147,27 +147,27 @@ export default function Hero() {
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent" />
             <div className="absolute bottom-4 left-4 z-10 space-y-1 text-sm">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
-                Currently exploring
-              </p>
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-300">Currently exploring</p>
               <p className="text-lg font-semibold text-white">
                 Machine learning & data visualisation
               </p>
             </div>
           </div>
+
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-200 transition-all duration-300 hover:border-sky-500/60 hover:text-slate-100"
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-200 transition-all duration-300 hover:border-blue-500/60 hover:text-slate-100"
             >
               <p className="text-xs text-slate-400">Current toolkit</p>
               <p className="mt-1 font-semibold text-white">
                 Python · JavaScript · ML · Data Visualisation
               </p>
             </motion.div>
+
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-200 transition-all duration-300 hover:border-sky-500/60 hover:text-slate-100"
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-200 transition-all duration-300 hover:border-blue-500/60 hover:text-slate-100"
             >
               <p className="text-xs text-slate-400">Interests</p>
               <p className="mt-1 font-semibold text-white">

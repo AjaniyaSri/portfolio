@@ -49,7 +49,7 @@ export default function Education() {
             </div>
           </div>
         </li>
-        <li className="relative">
+        {/* <li className="relative">
           <div className="absolute -left-[9px] mt-1 h-3 w-3 rounded-full border border-slate-600 bg-slate-950" />
           <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -69,7 +69,7 @@ export default function Education() {
               <li>Chemistry – C</li>
             </ul>
           </div>
-        </li>
+        </li> */}
       </ol>
     </section>
   )
