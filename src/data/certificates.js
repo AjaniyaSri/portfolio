@@ -2,7 +2,7 @@ export const certificates = [
   {
     name: 'Python for Beginners',
     issuer: 'University of Moratuwa (CODL)',
-    link: 'https://open.uom.lk/lms/mod/customcert/view.php?id=675&downloadown=1',
+    link: 'https://drive.google.com/file/d/1wW4JkkbOBK6zXUcpBh1AM2r-JBuPzGhU/view?usp=sharing',
   },
   {
     name: 'Machine Learning Pipelines with Azure ML Studio',
@@ -12,7 +12,7 @@ export const certificates = [
   {
     name: 'AWS Academy Graduate – AWS Academy Cloud Foundations',
     issuer: 'Amazon Web Services',
-    link: 'https://coursera.org/verify/XXXX',
+    link: 'https://drive.google.com/file/d/1H9k2l57vPKhx1X6oB3DQop5L36EERqK0/view?usp=sharing',
   },
   {
     name: 'Create Your First Python Program From UST',

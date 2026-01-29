@@ -1,14 +1,18 @@
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Code2, ArrowUpRight } from 'lucide-react'
-import { projects } from '../data/projects'
-import SectionHeader from './SectionHeader'
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Code2, ArrowUpRight } from "lucide-react";
+import { projects } from "../data/projects";
+import SectionHeader from "./SectionHeader";
 
 const fallbackProjectImage =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='360' viewBox='0 0 600 360'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop stop-color='%232563EB' offset='0%25'/%3E%3Cstop stop-color='%234F46E5' offset='50%25'/%3E%3Cstop stop-color='%230F172A' offset='100%25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='360' fill='%230F172A'/%3E%3Crect x='40' y='60' width='520' height='240' rx='36' fill='url(%23g)' opacity='0.85'/%3E%3C/svg%3E"
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='360' viewBox='0 0 600 360'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop stop-color='%232563EB' offset='0%25'/%3E%3Cstop stop-color='%234F46E5' offset='50%25'/%3E%3Cstop stop-color='%230F172A' offset='100%25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='360' fill='%230F172A'/%3E%3Crect x='40' y='60' width='520' height='240' rx='36' fill='url(%23g)' opacity='0.85'/%3E%3C/svg%3E";
 
 export default function Projects() {
   return (
-    <section id="projects" className="space-y-10" aria-labelledby="projects-heading">
+    <section
+      id="projects"
+      className="space-y-10"
+      aria-labelledby="projects-heading"
+    >
       <SectionHeader
         eyebrow="Projects"
         title="Work I’ve done"
@@ -34,9 +38,9 @@ export default function Projects() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
                 onError={(event) => {
-                  if (event.currentTarget.dataset.fallbackApplied) return
-                  event.currentTarget.dataset.fallbackApplied = 'true'
-                  event.currentTarget.src = fallbackProjectImage
+                  if (event.currentTarget.dataset.fallbackApplied) return;
+                  event.currentTarget.dataset.fallbackApplied = "true";
+                  event.currentTarget.src = fallbackProjectImage;
                 }}
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
@@ -71,43 +75,47 @@ export default function Projects() {
                 ))}
               </ul>
 
-              {project.link && (
+              {(project.link || project.demo) && (
                 <div className="mt-5 flex flex-wrap gap-3">
                   {/* View Code */}
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group/btn inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-5 py-2.5 text-xs font-semibold text-white transition-colors duration-200 hover:from-blue-400 hover:to-indigo-500"
-                  >
-                    <Github
-                      size={14}
-                      className="transition-transform duration-300 group-hover/btn:rotate-12"
-                    />
-                    View Code
-                    <ArrowUpRight
-                      size={12}
-                      className="opacity-0 transition-all duration-300 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
-                    />
-                  </motion.a>
+                  {project.link && (
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="group/btn inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-5 py-2.5 text-xs font-semibold text-white transition-colors duration-200 hover:from-blue-400 hover:to-indigo-500"
+                    >
+                      <Github
+                        size={14}
+                        className="transition-transform duration-300 group-hover/btn:rotate-12"
+                      />
+                      View Code
+                      <ArrowUpRight
+                        size={12}
+                        className="opacity-0 transition-all duration-300 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                      />
+                    </motion.a>
+                  )}
 
-                  {/* Details */}
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group/btn inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-xs font-semibold text-slate-200 transition-colors duration-200 hover:border-blue-500 hover:text-blue-400"
-                  >
-                    <ExternalLink
-                      size={14}
-                      className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
-                    />
-                    Project Details
-                  </motion.a>
+                  {/* Project Details (Demo) */}
+                  {project.demo && (
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="group/btn inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-xs font-semibold text-slate-200 transition-colors duration-200 hover:border-blue-500 hover:text-blue-400"
+                    >
+                      <ExternalLink
+                        size={14}
+                        className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                      />
+                      Project Details
+                    </motion.a>
+                  )}
                 </div>
               )}
             </div>
@@ -115,5 +123,5 @@ export default function Projects() {
         ))}
       </div>
     </section>
-  )
+  );
 }
