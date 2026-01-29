@@ -16,7 +16,7 @@ export const projects = [
       'Evaluated model performance and deployed the best model using pickle integration.',
       'Designed a user-friendly interface enabling real-time predictions for different vehicle inputs.',
     ],
-    link: 'https://github.com/sajivanK/vehicle-co2-emission-predictor',
+    link: 'https://github.com/AjaniyaSri/co2_emission_predictor',
     demo: 'https://co2-vehicle-calculator.streamlit.app',
   },
   {
