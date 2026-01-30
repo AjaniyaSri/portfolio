@@ -21,6 +21,20 @@ export const projects = [
 
   },
   {
+  title: 'AI Interview Assistant (RAG-based)',
+  year: '2025',
+  image: interviewAssistantImage,
+  points: [
+    'Built a Retrieval-Augmented Generation (RAG) system that generates interview questions grounded in resume and job description context.',
+    'Used sentence-transformer embeddings to retrieve relevant resume and JD sections before LLM-based question generation and evaluation.',
+    'Implemented structured answer scoring across relevance, clarity, technical accuracy, structure, and impact.',
+    'Developed a Streamlit frontend for interactive interviews and performance dashboards.',
+    'Designed a FastAPI backend to manage document ingestion, vector-based retrieval, evaluation APIs, and analytics.',
+  ],
+  link: 'https://github.com/AjaniyaSri/AI-Interview-Assistant'
+
+  },
+  {
     title: 'Password Safety AI',
     year: '2025',
     image: passwordImage,
@@ -46,30 +60,6 @@ export const projects = [
     demo: 'https://co2-vehicle-calculator.streamlit.app',
   },
   {
-    title: 'Car Resale Price Prediction System',
-    year: '2025',
-    image: carResaleImage,
-    points: [
-      'Analyzed historical car sales data to identify pricing trends and key influencing factors.',
-      'Built regression-based machine learning models to predict car resale prices accurately.',
-      'Created visual summaries to explain the impact of mileage, fuel type, and ownership on resale value.',
-    ],
-    link: 'https://github.com/AjaniyaSri/Car-price-prediction',
-    demo: 'https://car-resaleprice-prediction.streamlit.app',
-  },
-  {
-    title: 'Hotel Management System (MERN Stack)',
-    year: '2024',
-    image: hotelImage,
-    points: [
-      'Implemented customer-side hotel booking with room browsing and reservations.',
-      'Built admin-side features for booking management, event management, and additional services.',
-      'Used React, Node.js, Express, and MongoDB to create a full-stack MERN application.',
-    ],
-    link: 'https://github.com/AjaniyaSri/ITP',
-    // demo: 'https://car-resaleprice-prediction.streamlit.app',
-  },
-  {
     title: 'Superstore sales Prediction System',
     year: '2026',
     image: storeSalesImage,
@@ -80,17 +70,5 @@ export const projects = [
     ],
     link: 'https://github.com/AjaniyaSri/Store-sales-prediction',
     demo: 'https://superstore-sales-prediction.streamlit.app',
-  },
-  {
-    title: 'Food Delivery Application',
-    year: '2025',
-    image: foodDeliveryImage,
-    points: [
-      'Developed a full-stack food delivery application with user authentication and restaurant browsing.',
-      'Implemented cart management, order placement, and real-time order status tracking.',
-      'Built responsive UI using React and handled backend APIs with Node.js and MongoDB.',
-    ],
-    link: 'https://github.com/AjaniyaSri/food-delivery-app',
-    // demo: 'https://car-resaleprice-prediction.streamlit.app',
   },
 ]
