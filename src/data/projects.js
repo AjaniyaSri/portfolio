@@ -5,6 +5,7 @@ import foodDeliveryImage from '../assets/projects/food-delivery-app.png'
 import carResaleImage from '../assets/projects/car-resale-price.png'
 import storeSalesImage from '../assets/projects/superstoreSalesImage.png'
 import taxIRDAssistantImage from '../assets/projects/tax_ird_assistant.png'
+import interviewAssistantImage from '../assets/projects/AI-Assistant.png'
 
 export const projects = [
   {
@@ -22,7 +23,7 @@ export const projects = [
   },
   {
   title: 'AI Interview Assistant (RAG-based)',
-  year: '2025',
+  year: '2026',
   image: interviewAssistantImage,
   points: [
     'Built a Retrieval-Augmented Generation (RAG) system that generates interview questions grounded in resume and job description context.',
