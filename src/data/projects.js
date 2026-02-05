@@ -68,6 +68,6 @@ export const projects = [
     ],
 
     link: "https://github.com/AjaniyaSri/Store-sales-prediction",
-    demo: "https://superstore-sales-prediction.streamlit.app",
+    demo: "https://app.powerbi.com/groups/me/reports/2ee77fe7-ef4e-4ff8-8935-d297078fe576/8fa52824170ad40d615a?experience=power-bi",
   },
 ];
